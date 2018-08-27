@@ -18,14 +18,20 @@ class App extends Component {
           </div>
 
           <div className="Filter-set">
-            <input placeholder="Filter dropdown"></input>
-            <button>placeholder filter 1 </button>
+            <select>
+              <option value="todo">Style1</option>
+              <option value="todo">Style2</option>
+              <option selected value="todo">Filter dropdown</option>
+              <option value="todo">Stylen</option>
+            </select>
+            <button>placeholder filter 1</button>
             <button>placeholder filter 2 </button>
           </div>
 
           <div className="Location-input">
             <input placeholder="Enter location autocomplete"></input>
-            <input placeholder="Sliding bar radius"></input>
+            Sliding bar radius: 
+            <input type="range" min="1" max="100" value="50" class="slider" id="myRange" />
           </div>
         </div>
 

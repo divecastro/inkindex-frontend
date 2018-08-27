@@ -21,6 +21,7 @@ class ResultList extends Component {
         }.bind(this))
         .catch(function (error) {
             // handle error
+            //TODO Add proper error handling!!
             console.log(error);
         })
         .then(function () {
