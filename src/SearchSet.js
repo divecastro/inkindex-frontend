@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import SearchLocation from './SearchLocation';
 
 class SearchSet extends Component {
 
@@ -21,11 +22,7 @@ class SearchSet extends Component {
                     <button>placeholder filter 2 </button>
                 </div>
     
-                <div className="Location-input">
-                    <input placeholder="Enter location autocomplete"></input>
-                    Sliding bar radius: 
-                    <input type="range" min="1" max="100" />
-                </div>
+                <SearchLocation />
             </div>
         );
     }

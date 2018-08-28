@@ -8,7 +8,7 @@ export const REMOVE_FILTER = "REMOVE_FILTER";
 export const SET_LOCATION = "SET_LOCATION";
 export const SET_RADIUS = "SET_RADIUS";
 export const RESET_FILTERS = "RESET_FILTERS";
-
+export const UPDATE_RESULTS ="UPDATE_RESULTS";
 /*
 * TODO REMOVE
 */
@@ -19,3 +19,13 @@ export function DummyAction(e=null) {
         payload: e
     }
 }
+
+export function updateResults(e=null) {
+    console.log(`Results added:`)
+    console.log(e)
+    return {
+        type: UPDATE_RESULTS,
+        payload: e
+    }
+}
+
