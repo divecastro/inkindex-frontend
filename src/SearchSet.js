@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
 import SearchLocation from './SearchLocation';
+import SearchTextInput from './SearchTextInput';
 
 class SearchSet extends Component {
 
     render() {
         return (
             <div className="Search-set">  
-                <div className="Text-filter">
-                    <input placeholder="Enter Artist or Studio Name"></input>
-                    <button>Submit name query</button>
-                </div>
-    
+                <SearchTextInput />
+                <br />
                 <div className="Filter-set">
                     <select>
                         <option value="todo">Style1</option>
