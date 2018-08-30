@@ -18,7 +18,6 @@ class App extends Component {
         
         <b>Result Div</b> 
         <ResultList />
-
       </div>
     );
   }

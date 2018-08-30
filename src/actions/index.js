@@ -29,3 +29,20 @@ export function updateResults(e=null) {
     }
 }
 
+export function addFilter(e=null) {
+    console.log(`Filter add emitted: ${e}`)
+    return {
+        type: ADD_FILTER,
+        payload: e
+    }
+}
+
+export function removeFilter(e=null) {
+    console.log(`Filter remove emitted: ${e}`)
+    return {
+        type: REMOVE_FILTER,
+        payload: e
+    }
+}
+
+
