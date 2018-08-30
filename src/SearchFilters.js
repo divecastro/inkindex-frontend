@@ -15,7 +15,7 @@ class SearchFilters extends Component {
         console.log(filters)
         if(filters !== undefined && filters !== null) {
             const listFilters = filters.map((filter) =>
-                <button disabled  item={filter} key={filter}/>
+                <button disabled  item={filter} key={filter}>{filter}</button>
             );
             return (
                 <div>{listFilters}</div>
@@ -33,16 +33,16 @@ class SearchFilters extends Component {
         console.log(this.props.filters)
         return (
             <div className="Filter-set">
-                not operational yet yeet
                 <select>
                     <option value="todo">Style1</option>
                     <option value="todo">Style2</option>
                     <option selected value="todo">Filter dropdown </option>
                     <option value="todo">Stylen</option>
                 </select>
+                 {this.listFilters(this.props.filters)}
+
                 <button onClick={()=>{this.props.addFilter("YEET")}}>Test Add</button>
                 <button onClick={()=>{this.props.removeFilter("YEET")}}>Test Remove</button>
-                {this.listFilters(this.props.filters)}
             </div>
             
         );

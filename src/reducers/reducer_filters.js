@@ -1,6 +1,6 @@
 import {ADD_FILTER,REMOVE_FILTER} from '../actions/index';
 
-export default function(state = [], action) {
+export default function(state = ["LOL","WOW"], action) {
     var x;
 
     switch (action.type) {
