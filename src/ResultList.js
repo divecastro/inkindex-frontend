@@ -21,15 +21,15 @@ class ResultList extends Component {
                     let dupe_flag = false;
                     let tags = results[x].tags.split(',')
                     for(var y in this.props.filters) {
-                        if(tags.indexOf(this.props.filters[y])) {
+                        if(tags.indexOf(this.props.filters[y]) !== -1) {
                             dupe_flag = true;
                             break;
                         }
                     }
                     //Remove result with no matching criteria
                     if(!dupe_flag) {
+                        console.log(results[x])
                         renderlist.splice(renderlist.indexOf(results[x]),1);
-
                     }
                 }
             }
