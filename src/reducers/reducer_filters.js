@@ -6,7 +6,12 @@ export default function(state = ["LOL","WOW"], action) {
     switch (action.type) {
         //REMOVE WHEN DONE
         case ADD_FILTER:
+            if(action.payload)
             console.log("New Filter Added!");
+            if(action.payload === "") {
+                console.log("No value, skipping filter")
+                return state;
+            }
             for(x in state) {
                 if(state[x].valueOf() === action.payload.valueOf()) {
                     console.log("Filter pre-existing. Pass")

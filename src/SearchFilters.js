@@ -4,40 +4,54 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 
 class SearchFilters extends Component {
-    
-    listFilters(filters) {
-        console.log("wow")
-        console.log(filters)
+    constructor(props) {
+        super(props);
+        this.renderFilterMenu = this.renderFilterMenu.bind(this);
+        this.listFilterButtons = this.listFilterButtons.bind(this);
+    }
+
+    listFilterButtons(filters) {
         if(filters !== undefined && filters !== null) {
             const listFilters = filters.map((filter) =>
-                <button disabled  item={filter} key={filter}>{filter}</button>
+                <button onClick={()=>{this.props.removeFilter(filter)}} key={filter}>{filter}</button>
             );
             return (
                 <div>{listFilters}</div>
             );
         }
         else {
-            return (
-                <b>No Results Found</b>       
-            );
+            return;
         }
         
+    }
+
+    listFilterDropdowns(filters) {
+        if(filters !== undefined && filters !== null) {
+            const listFilters = filters.map((filter) =>
+                <option value={filter.value} key={filter.value}>{filter.label}</option>
+            );
+            return listFilters;
+        }
+        return;
+       
+    }
+    renderFilterMenu() {
+        let temp = [{label:"Select a filter", value:""},{label:"Classical",value:"classical"},{label:"asdf",value:"fdsa"}]
+        return(
+            <select onChange={(e)=>{this.props.addFilter(e.target.value)}} value="">
+                {this.listFilterDropdowns(temp)}
+            </select>
+        );
     }
 
     render() {
         console.log(this.props.filters)
         return (
             <div className="Filter-set">
-                <select>
-                    <option value="todo">Style1</option>
-                    <option value="todo">Style2</option>
-                    <option selected value="todo">Filter dropdown </option>
-                    <option value="todo">Stylen</option>
-                </select>
-                 {this.listFilters(this.props.filters)}
-
-                <button onClick={()=>{this.props.addFilter("YEET")}}>Test Add</button>
-                <button onClick={()=>{this.props.removeFilter("YEET")}}>Test Remove</button>
+                {this.renderFilterMenu()}
+                {this.listFilterButtons(this.props.filters)}
+                {/* <button onClick={()=>{this.props.addFilter("YEET")}}>Test Add</button>
+                <button onClick={()=>{this.props.removeFilter("YEET")}}>Test Remove</button> */}
             </div>
             
         );
