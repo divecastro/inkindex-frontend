@@ -4,11 +4,6 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 
 class SearchFilters extends Component {
-
-    constructor(props) {
-        super(props)
-        this.state = {filters: this.props.filters}
-    }
     
     listFilters(filters) {
         console.log("wow")

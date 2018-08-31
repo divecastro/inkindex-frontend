@@ -13,9 +13,9 @@ export default function(state = ["LOL","WOW"], action) {
                     return state;
                 }
             }
-            state.push(action.payload)
             console.log(state)
-            return state;
+            //Proper way to deep copy. Create an entirely new state to return
+            return state.concat(action.payload);
 
         case REMOVE_FILTER:
             console.log("Filter Removal started!");
@@ -23,8 +23,10 @@ export default function(state = ["LOL","WOW"], action) {
             for(x in state) {
                 if(state[x].valueOf() === action.payload.valueOf()) {
                     console.log("Filter removed!!")
-                    state.splice(state.indexOf(x),1);
-                    return state;
+                    //Somehow this allows a deep copy? Shit i dunno
+                    let newstate = [...state];
+                    newstate.splice(state.indexOf(x),1);
+                    return newstate;
                 }
             }
 
