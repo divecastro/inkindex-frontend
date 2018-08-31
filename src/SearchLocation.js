@@ -11,7 +11,7 @@ class SearchLocation extends Component {
         //Replace the call with a request for a close proximity dataset woop
         const axios = require('axios');
         // Make a request for a user with a given ID
-        axios.get('https://triagetest-1.firebaseio.com/.json')
+        axios.get('https://my-project-1492737338091.firebaseio.com/artists/melbourne.json')
         .then(function (response) {
             // handle success
             console.log(response.data)

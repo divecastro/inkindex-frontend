@@ -4,7 +4,7 @@ class ResultItem extends Component {
 
     render() {
         return (
-            <li>{this.props.item.name} | Ailment: {this.props.item.desc}</li>
+            <li>{this.props.item.name} | Website: {this.props.item.website}</li>
         );
     }
 }

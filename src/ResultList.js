@@ -6,11 +6,29 @@ class ResultList extends Component {
     constructor(props) {
         super(props);
         this.state = ({first_fetch:false});
+        this.listResults = this.listResults.bind(this);
     }
 
     listResults(results) {
         if(results !== undefined && results !== null) {
-            const listResults = results.map((result) =>
+            let renderlist = [...results];
+            if(this.props.filters!== undefined && this.props.filters.length > 0) {
+                for(var x in results) {
+                    let dupe_flag = false;
+                    let tags = results[x].tags.split(',')
+                    for(var y in this.props.filters) {
+                        if(tags.indexOf(this.props.filters[y])) {
+                            dupe_flag = true;
+                            break;
+                        }
+                    }
+                    if(!dupe_flag) {
+                        renderlist.splice(renderlist.indexOf(results[x]),1);
+
+                    }
+                }
+            }
+            const listResults = renderlist.map((result) =>
                 <ResultItem  item={result} key={result.name}/>
             );
             return (
@@ -48,7 +66,8 @@ class ResultList extends Component {
 
 function mapStateToProps(state) {
     return {
-        results: state.results
+        results: state.results,
+        filters: state.filters
     }
 }
 

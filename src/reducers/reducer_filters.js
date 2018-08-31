@@ -1,6 +1,6 @@
 import {ADD_FILTER,REMOVE_FILTER} from '../actions/index';
 
-export default function(state = ["LOL","WOW"], action) {
+export default function(state = [], action) {
     var x;
 
     switch (action.type) {
@@ -18,7 +18,7 @@ export default function(state = ["LOL","WOW"], action) {
                     return state;
                 }
             }
-            console.log(state)
+            console.log(state.concat(action.payload))
             //Proper way to deep copy. Create an entirely new state to return
             return state.concat(action.payload);
 
@@ -30,7 +30,7 @@ export default function(state = ["LOL","WOW"], action) {
                     console.log("Filter removed!!")
                     //Somehow this allows a deep copy? Shit i dunno
                     let newstate = [...state];
-                    newstate.splice(state.indexOf(x),1);
+                    newstate.splice(state.indexOf(state[x]),1);
                     return newstate;
                 }
             }
