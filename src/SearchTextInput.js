@@ -9,12 +9,14 @@ class SearchTextInput extends Component {
     }
     
     getOptions() {
+        //Get options from the current result set
         return this.props.results.map((result) => {
             return ({value: result.name.toLowerCase(),label: result.name})
         })
     }
 
     handleChange = (selectedOption) => {
+        //TODO TIE TO A REDUX ACTION TO ACTUALLY SEND USER TO CORRECT PAGE
         this.setState({ selectedOption });
         console.log(`Option selected:`, selectedOption);
     }

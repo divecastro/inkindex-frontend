@@ -13,7 +13,9 @@ class SearchFilters extends Component {
     }
 
     listFilterButtons(filters) {
+        //Only start listing if there are any filters
         if(filters !== undefined && filters !== null) {
+            //List filters. Hit the uppercase on first letter for rendering
             const listFilters = filters.map((filter) =>
                 <button onClick={()=>{this.props.removeFilter(filter)}} 
                         key={filter}>{_.startCase(filter)}
@@ -32,9 +34,12 @@ class SearchFilters extends Component {
     listFilterDropdowns() {
         var x;
         var filts = ["Select a filter"];
+
+        //Add something in case no filters found (should only be the case while loading first dataset)
         if(this.props.results.length === 0) {
             return <option value={""} key={"none"}>None yet!</option>
         }
+        //List the dropdowns
         for(x in this.props.results) {
             var tags = this.props.results[x].tags.split(',');
             for(var y in tags) {
@@ -44,6 +49,7 @@ class SearchFilters extends Component {
             }
         }
 
+        //Render the filters
         if(filts !== undefined && filts !== null) {
             const listFilters = filts.map((filter) =>
                 <option value={filter} key={filter}>{_.startCase(filter)}</option>

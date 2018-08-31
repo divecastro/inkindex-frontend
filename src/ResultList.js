@@ -10,9 +10,13 @@ class ResultList extends Component {
     }
 
     listResults(results) {
+        //Check if there are any results
         if(results !== undefined && results !== null) {
+            //Deep copy for manipulation
             let renderlist = [...results];
+            //Check if actually any active filters else render all results
             if(this.props.filters!== undefined && this.props.filters.length > 0) {
+                //Iterate active filters against the result tags and remove if no tags match
                 for(var x in results) {
                     let dupe_flag = false;
                     let tags = results[x].tags.split(',')
@@ -22,12 +26,14 @@ class ResultList extends Component {
                             break;
                         }
                     }
+                    //Remove result with no matching criteria
                     if(!dupe_flag) {
                         renderlist.splice(renderlist.indexOf(results[x]),1);
 
                     }
                 }
             }
+            //Render results
             const listResults = renderlist.map((result) =>
                 <ResultItem  item={result} key={result.name}/>
             );
